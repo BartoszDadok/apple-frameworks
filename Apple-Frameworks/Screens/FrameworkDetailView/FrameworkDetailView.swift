@@ -10,7 +10,6 @@ import SwiftUI
 struct FrameworkDetailView: View {
     
     var framework: Framework
-    @Binding var isShowingDetailView: Bool
     @State private var isShowingSafariView = false
     
     var body: some View {
@@ -28,7 +27,6 @@ struct FrameworkDetailView: View {
             isShowingSafariView = true
         } label: {
             AFButton(title: "Learn more")
-              
         }
         .fullScreenCover(isPresented: $isShowingSafariView, content:{
             SafariView(url: URL(string: framework.urlString) ?? URL(string: "www.apple.com")!)
@@ -37,5 +35,5 @@ struct FrameworkDetailView: View {
 }
 
 #Preview {
-    FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+    FrameworkDetailView(framework: MockData.sampleFramework)
 }
